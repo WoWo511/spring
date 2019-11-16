@@ -42,6 +42,7 @@ import org.springframework.util.MultiValueMap;
  * @since 4.0
  * @see AnnotationMetadata
  * @see MethodMetadata
+ * 封装了一个类里面所有注解的东西哈
  */
 public interface AnnotatedTypeMetadata {
 

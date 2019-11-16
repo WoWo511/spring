@@ -43,6 +43,7 @@ import org.springframework.beans.BeansException;
  * @see PropertyResourceConfigurer
  */
 @FunctionalInterface
+// beanfactory的后置处理器哈 用来处理bean的
 public interface BeanFactoryPostProcessor {
 
 	/**

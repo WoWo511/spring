@@ -45,15 +45,16 @@ import org.springframework.util.Assert;
  * @since 3.0
  * @see AnnotationConfigApplicationContext#register
  */
+//注解配置容器的阅读器 作用是来注册相关的bean 注册之后用
 public class AnnotatedBeanDefinitionReader {
 
-	private final BeanDefinitionRegistry registry;
+	private final BeanDefinitionRegistry registry;// beandefinition
 
 	private BeanNameGenerator beanNameGenerator = AnnotationBeanNameGenerator.INSTANCE;
 
-	private ScopeMetadataResolver scopeMetadataResolver = new AnnotationScopeMetadataResolver();
+	private ScopeMetadataResolver scopeMetadataResolver = new AnnotationScopeMetadataResolver();// 解析器
 
-	private ConditionEvaluator conditionEvaluator;
+	private ConditionEvaluator conditionEvaluator;// 状况评估者哈
 
 
 	/**
@@ -79,6 +80,7 @@ public class AnnotatedBeanDefinitionReader {
 	 * profiles.
 	 * @since 3.1
 	 */
+	//创建的时候就把application注册进来了 所以他可以直接用哈
 	public AnnotatedBeanDefinitionReader(BeanDefinitionRegistry registry, Environment environment) {
 		Assert.notNull(registry, "BeanDefinitionRegistry must not be null");
 		Assert.notNull(environment, "Environment must not be null");
@@ -131,8 +133,9 @@ public class AnnotatedBeanDefinitionReader {
 	 * @param annotatedClasses one or more annotated classes,
 	 * e.g. {@link Configuration @Configuration} classes
 	 */
-	public void register(Class<?>... annotatedClasses) {
+	public void register(Class<?>... annotatedClasses) { // 这是一个循环 循环将所有的beandefine都注册进来哈
 		for (Class<?> annotatedClass : annotatedClasses) {
+			//注册bean
 			registerBean(annotatedClass);
 		}
 	}
@@ -248,7 +251,7 @@ public class AnnotatedBeanDefinitionReader {
 	private <T> void doRegisterBean(Class<T> annotatedClass, @Nullable String name,
 			@Nullable Class<? extends Annotation>[] qualifiers, @Nullable Supplier<T> supplier,
 			@Nullable BeanDefinitionCustomizer[] customizers) {
-
+		// 创建注解一般bd 在某处将这个bd 放进容器中
 		AnnotatedGenericBeanDefinition abd = new AnnotatedGenericBeanDefinition(annotatedClass);
 		if (this.conditionEvaluator.shouldSkip(abd.getMetadata())) {
 			return;

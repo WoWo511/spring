@@ -27,8 +27,9 @@ import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 
 /**
+ * 独立的
  * Standalone application context, accepting annotated classes as input - in particular
- * {@link Configuration @Configuration}-annotated classes, but also plain
+ * {@link Configuration @Configuration}-annotated classes, but also plain 格式的
  * {@link org.springframework.stereotype.Component @Component} types and JSR-330 compliant
  * classes using {@code javax.inject} annotations. Allows for registering classes one by
  * one using {@link #register(Class...)} as well as for classpath scanning using
@@ -50,18 +51,21 @@ import org.springframework.util.Assert;
  * @see ClassPathBeanDefinitionScanner
  * @see org.springframework.context.support.GenericXmlApplicationContext
  */
+//generic 普通的一般的
 public class AnnotationConfigApplicationContext extends GenericApplicationContext implements AnnotationConfigRegistry {
 
+	//读取注解的beandefinition annotatedBeanDefinitionReader
 	private final AnnotatedBeanDefinitionReader reader;
-
+	// 读取类路径的beandefinition
 	private final ClassPathBeanDefinitionScanner scanner;
 
 
 	/**
-	 * Create a new AnnotationConfigApplicationContext that needs to be populated
+	 * Create a new AnnotationConfigApplicationContext that needs to be populated 组装
 	 * through {@link #register} calls and then manually {@linkplain #refresh refreshed}.
 	 */
 	public AnnotationConfigApplicationContext() {
+		// 看一个类最好的方法就是看构造函数 已创建的时候添加了哪些内容哈
 		this.reader = new AnnotatedBeanDefinitionReader(this);
 		this.scanner = new ClassPathBeanDefinitionScanner(this);
 	}
@@ -84,7 +88,9 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	 */
 	public AnnotationConfigApplicationContext(Class<?>... annotatedClasses) {
 		this();
+		// 将类都注册进来
 		register(annotatedClasses);
+		//启动容器
 		refresh();
 	}
 
@@ -152,10 +158,11 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	 * @see #scan(String...)
 	 * @see #refresh()
 	 */
+	//准备工作 ，判断是否为空 继承自AnnotationConfigRegistry类的两个方法
 	@Override
 	public void register(Class<?>... annotatedClasses) {
 		Assert.notEmpty(annotatedClasses, "At least one annotated class must be specified");
-		this.reader.register(annotatedClasses);
+		this.reader.register(annotatedClasses);//annotatedBeanDefinedReader 注册注解
 	}
 
 	/**

@@ -57,6 +57,7 @@ import org.springframework.util.ClassUtils;
  * @see org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor
  * @see org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor
  */
+// 注解配置的工具类哈
 public abstract class AnnotationConfigUtils {
 
 	/**
@@ -236,6 +237,7 @@ public abstract class AnnotationConfigUtils {
 
 	static void processCommonDefinitionAnnotations(AnnotatedBeanDefinition abd, AnnotatedTypeMetadata metadata) {
 		AnnotationAttributes lazy = attributesFor(metadata, Lazy.class);
+		//通過注解来确定是否是懒加载哈
 		if (lazy != null) {
 			abd.setLazyInit(lazy.getBoolean("value"));
 		}

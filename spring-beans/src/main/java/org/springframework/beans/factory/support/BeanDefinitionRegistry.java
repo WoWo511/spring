@@ -45,7 +45,7 @@ import org.springframework.core.AliasRegistry;
  * @see org.springframework.beans.factory.xml.XmlBeanDefinitionReader
  * @see PropertiesBeanDefinitionReader
  */
-public interface BeanDefinitionRegistry extends AliasRegistry {
+public interface BeanDefinitionRegistry extends AliasRegistry {//applicationContext也是他的继承类 所以最开始的时候就是applicationContext
 
 	/**
 	 * Register a new bean definition with this registry.
