@@ -23,6 +23,13 @@ package org.springframework.core;
  * @author Juergen Hoeller
  * @since 2.5.2
  */
+
+/**
+ * 接口的作用是注册beanfactory 将bd注入进容器中
+ * 主要继承类有两个
+ * simpleRegistry
+ * BDregister
+ */
 public interface AliasRegistry {
 
 	/**

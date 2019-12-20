@@ -45,9 +45,14 @@ import org.springframework.core.AliasRegistry;
  * @see org.springframework.beans.factory.xml.XmlBeanDefinitionReader
  * @see PropertiesBeanDefinitionReader
  */
+
+/**
+ * 关于bdregister bdregister bdremove bdcontainer getBD getBDcount isbdinUSer
+ */
 public interface BeanDefinitionRegistry extends AliasRegistry {//applicationContext也是他的继承类 所以最开始的时候就是applicationContext
 
 	/**
+	 * 关于beandefinition的注册哈 将他注册到里面
 	 * Register a new bean definition with this registry.
 	 * Must support RootBeanDefinition and ChildBeanDefinition.
 	 * @param beanName the name of the bean instance to register

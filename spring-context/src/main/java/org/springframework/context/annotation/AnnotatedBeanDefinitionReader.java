@@ -54,7 +54,7 @@ public class AnnotatedBeanDefinitionReader {
 
 	private ScopeMetadataResolver scopeMetadataResolver = new AnnotationScopeMetadataResolver();// 解析器
 
-	private ConditionEvaluator conditionEvaluator;// 状况评估者哈
+	private ConditionEvaluator conditionEvaluator;// 状况评估者哈 查看各种
 
 
 	/**
@@ -284,6 +284,8 @@ public class AnnotatedBeanDefinitionReader {
 
 		BeanDefinitionHolder definitionHolder = new BeanDefinitionHolder(abd, beanName);
 		definitionHolder = AnnotationConfigUtils.applyScopedProxyMode(scopeMetadata, definitionHolder, this.registry);
+		//这里也很重要将bean 注册到defaultListableBeanFactory 里面哈
+		//这里也很重要将bean 注册到defaultListableBeanFactory 里面哈
 		BeanDefinitionReaderUtils.registerBeanDefinition(definitionHolder, this.registry);
 	}
 
