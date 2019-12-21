@@ -25,5 +25,10 @@ public class Demo {
 		return new test();
 	}
 
+	@Bean
+	MyAware myAware() {
+		return new MyAware();
+	}
+
 
 }

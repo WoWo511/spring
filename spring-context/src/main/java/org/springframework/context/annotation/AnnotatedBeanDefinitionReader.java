@@ -81,6 +81,12 @@ public class AnnotatedBeanDefinitionReader {
 	 * @since 3.1
 	 */
 	//创建的时候就把application注册进来了 所以他可以直接用哈
+
+	/**
+	 * 刚初始化的时候就要创建一些基本的组件，将这些组件注册到bd的map中哈
+	 * @param registry
+	 * @param environment
+	 */
 	public AnnotatedBeanDefinitionReader(BeanDefinitionRegistry registry, Environment environment) {
 		Assert.notNull(registry, "BeanDefinitionRegistry must not be null");
 		Assert.notNull(environment, "Environment must not be null");

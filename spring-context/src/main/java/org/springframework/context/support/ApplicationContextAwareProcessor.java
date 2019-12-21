@@ -103,6 +103,10 @@ class ApplicationContextAwareProcessor implements BeanPostProcessor {
 		return bean;
 	}
 
+	/**
+	 * 判断是什么类型的Aware  在这个里面给他装配定制的系统组件哈，比如说我可以定制自己的bean 那个里面既有容易 也有自己的postProcessor 那样就可以一块进行了哈
+	 * @param bean
+	 */
 	private void invokeAwareInterfaces(Object bean) {
 		if (bean instanceof EnvironmentAware) {
 			((EnvironmentAware) bean).setEnvironment(this.applicationContext.getEnvironment());

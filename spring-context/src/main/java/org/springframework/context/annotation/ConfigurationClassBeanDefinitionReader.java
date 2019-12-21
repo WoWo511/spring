@@ -57,6 +57,8 @@ import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
 /**
+ * bdReader 就是专门读取哪些可能是bean定义的类，然后将类注册到容器中的情况哈
+ * 专门读取Config类里面的bean的信息的，读完bean的信息 之后就开始实例化哪些个信息了哈
  * Reads a given fully-populated set of ConfigurationClass instances, registering bean
  * definitions with the given {@link BeanDefinitionRegistry} based on its contents.
  *
@@ -122,6 +124,7 @@ class ConfigurationClassBeanDefinitionReader {
 	}
 
 	/**
+	 * configurationClassBeanDefinitionReader 里面的
 	 * Read a particular {@link ConfigurationClass}, registering bean definitions
 	 * for the class itself and all of its {@link Bean} methods.
 	 */
@@ -176,6 +179,9 @@ class ConfigurationClassBeanDefinitionReader {
 	 */
 	@SuppressWarnings("deprecation")  // for RequiredAnnotationBeanPostProcessor.SKIP_REQUIRED_CHECK_ATTRIBUTE
 	private void loadBeanDefinitionsForBeanMethod(BeanMethod beanMethod) {
+		/**
+		 * 开始都是装配这个db 后面就直接注册这个db了哈
+		 */
 		ConfigurationClass configClass = beanMethod.getConfigurationClass();
 		MethodMetadata metadata = beanMethod.getMetadata();
 		String methodName = metadata.getMethodName();

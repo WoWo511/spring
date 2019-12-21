@@ -88,7 +88,9 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	 */
 	public AnnotationConfigApplicationContext(Class<?>... annotatedClasses) {
 		this();
-		// 将类都注册进来
+		/**
+		 * 这个里面是把config类注册进去了，但是他里面的类还都没有注册进入到容器里面去呢
+		 */
 		register(annotatedClasses);
 		//启动容器
 		refresh();

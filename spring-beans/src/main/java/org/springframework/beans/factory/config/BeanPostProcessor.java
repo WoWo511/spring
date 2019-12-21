@@ -20,6 +20,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.lang.Nullable;
 
 /**
+ * 所有实现了这个接口，并且注册到容器中的，都会对每个处室化的实例进行拦截，个性化的生成相应的类哈
  * Factory hook that allows for custom modification of new bean instances,
  * e.g. checking for marker interfaces or wrapping them with proxies.
  *

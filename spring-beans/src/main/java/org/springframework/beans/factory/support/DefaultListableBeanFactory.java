@@ -904,8 +904,13 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 
 	//---------------------------------------------------------------------
 	// Implementation of BeanDefinitionRegistry interface
-	//---------------------------------------------------------------------
 
+	/**
+	 * 所有注册到容器中的都通过这一步，我只要找到这一步看他是哪里调用的就可以了啊
+	 * @param beanName the name of the bean instance to register
+	 * @param beanDefinition definition of the bean instance to register
+	 * @throws BeanDefinitionStoreException
+	 */
 	// 很重要 这个是将bean注册到容器中 关键的一步哈//
 	@Override
 	public void registerBeanDefinition(String beanName, BeanDefinition beanDefinition)

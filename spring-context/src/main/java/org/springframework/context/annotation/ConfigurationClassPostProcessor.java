@@ -125,7 +125,7 @@ public class ConfigurationClassPostProcessor implements BeanDefinitionRegistryPo
 	private MetadataReaderFactory metadataReaderFactory = new CachingMetadataReaderFactory();
 
 	private boolean setMetadataReaderFactoryCalled = false;
-
+	/**所有处理过的都要将他的Id放入集合里面 以免处理多次哈**/
 	private final Set<Integer> registriesPostProcessed = new HashSet<>();
 
 	private final Set<Integer> factoriesPostProcessed = new HashSet<>();
@@ -334,6 +334,9 @@ public class ConfigurationClassPostProcessor implements BeanDefinitionRegistryPo
 						registry, this.sourceExtractor, this.resourceLoader, this.environment,
 						this.importBeanNameGenerator, parser.getImportRegistry());
 			}
+			/**
+			 * 这个方法是重点 通过config类 载入其他类哈
+			 */
 			this.reader.loadBeanDefinitions(configClasses);
 			alreadyParsed.addAll(configClasses);
 

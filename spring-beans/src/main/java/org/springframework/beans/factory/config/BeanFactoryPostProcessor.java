@@ -18,10 +18,11 @@ package org.springframework.beans.factory.config;
 
 import org.springframework.beans.BeansException;
 
-/**
+/**custom 自定义的
  * Allows for custom modification of an application context's bean definitions,
  * adapting the bean property values of the context's underlying bean factory.
  *
+ * 也就是说beanFactoryPostProcessor是先于其他bean创建的
  * <p>Application contexts can auto-detect BeanFactoryPostProcessor beans in
  * their bean definitions and apply them before any other beans get created.
  *
