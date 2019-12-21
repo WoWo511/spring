@@ -528,7 +528,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 			try {
 				// Allows post-processing of the bean factory in context subclasses.
 				postProcessBeanFactory(beanFactory);
-				//实际上这个里面初始化了bean哈
+				//实际上这个里面初始化了bean哈 也是在这个里面将config类配置的bean也都一块初始化了哈
 				// Invoke factory processors registered as beans in the context.
 				invokeBeanFactoryPostProcessors(beanFactory);
 
@@ -546,6 +546,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 				// Check for listener beans and register them.
 				registerListeners();
+
 				// Instantiate all remaining (non-lazy-init) singletons.
 				finishBeanFactoryInitialization(beanFactory);
 

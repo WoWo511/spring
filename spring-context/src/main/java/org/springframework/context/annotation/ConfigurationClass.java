@@ -35,6 +35,7 @@ import org.springframework.util.Assert;
 import org.springframework.util.ClassUtils;
 
 /**
+ * 抽象出来的配置的class 所有的标有config注解的类都是这里检查的 检查出他的方法，然后再进行相应的初始化哈
  * Represents a user-defined {@link Configuration @Configuration} class.
  * Includes a set of {@link Bean} methods, including all such methods
  * defined in the ancestry of the class, in a 'flattened-out' manner.
