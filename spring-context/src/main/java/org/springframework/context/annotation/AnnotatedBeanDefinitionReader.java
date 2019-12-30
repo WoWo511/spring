@@ -297,6 +297,7 @@ public class AnnotatedBeanDefinitionReader {
 
 
 	/**
+	 * 环境属性哈
 	 * Get the Environment from the given registry if possible, otherwise return a new
 	 * StandardEnvironment.
 	 */

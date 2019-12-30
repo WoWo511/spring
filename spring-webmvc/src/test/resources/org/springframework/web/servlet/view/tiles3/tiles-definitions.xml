@@ -5,6 +5,6 @@
 
 <tiles-definitions>
 
-	<definition name="test" template="/WEB-INF/tiles/test.jsp"/>
+	<definition name="demo.test" template="/WEB-INF/tiles/demo.test.jsp"/>
 
 </tiles-definitions>

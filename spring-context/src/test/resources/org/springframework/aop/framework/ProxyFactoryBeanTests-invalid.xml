@@ -10,7 +10,7 @@
 	</bean>
 
 	<!--
-		Invalid test for global pointcuts.
+		Invalid demo.test for global pointcuts.
 		Must have target after *.
 	-->
 	<bean id="globalsWithoutTarget" class="org.springframework.aop.framework.ProxyFactoryBean">

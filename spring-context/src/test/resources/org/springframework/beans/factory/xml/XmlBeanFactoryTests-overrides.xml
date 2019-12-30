@@ -17,7 +17,7 @@
 	</bean>
 
 	<!--
-		We can use this to test the construction cost of beans with method overrides
+		We can use this to demo.test the construction cost of beans with method overrides
 	-->
 	<bean id="overrideOnPrototype" scope="prototype"
 			class="org.springframework.beans.factory.xml.OverrideOneMethod">

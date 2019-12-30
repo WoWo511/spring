@@ -1,15 +1,30 @@
+package demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.GenericXmlApplicationContext;
-import org.springframework.stereotype.Component;
 
-@Component
+@ComponentScan(basePackages = "demo")
 @Configuration
 public class Demo {
+	public hh getHh() {
+		return hh;
+	}
+
+	public void setHh(hh hh) {
+		this.hh = hh;
+	}
+
+	@Autowired
+	public hh hh;
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(Demo.class);
-		Object test = annotationConfigApplicationContext.getBean("test");
+		/**
+		 * 需要扫描以下才可以哈
+		 */
+		autowiredDemo test = (autowiredDemo) annotationConfigApplicationContext.getBean("autowiredDemo");
 		System.out.println();
 //		GenericXmlApplicationContext genericXmlApplicationContext = new GenericXmlApplicationContext();
 //		genericXmlApplicationContext.load("");
@@ -29,6 +44,5 @@ public class Demo {
 	MyAware myAware() {
 		return new MyAware();
 	}
-
 
 }

@@ -34,7 +34,7 @@
 
 	<!-- ================ Definitions for second ThreadLocalTargetSource ====== -->
 
-	<bean id="test" class="org.springframework.tests.sample.beans.TestBean" scope="prototype">
+	<bean id="demo.test" class="org.springframework.tests.sample.beans.TestBean" scope="prototype">
 		<property name="name"><value>Rod</value></property>
 		<property name="spouse"><ref bean="wife"/></property>
 	</bean>
@@ -44,7 +44,7 @@
 	</bean>
 
 	<bean id="threadLocalTs2" class="org.springframework.aop.target.ThreadLocalTargetSource">
-		<property name="targetBeanName"><value>test</value></property>
+		<property name="targetBeanName"><value>demo.test</value></property>
 	</bean>
 
 	<bean id="threadLocal2" class="org.springframework.aop.framework.ProxyFactoryBean">

@@ -16,8 +16,8 @@
 				/??path??matching.html=mainController
 				/path??matching.html=mainController
 				/administrator/another/bla.xml=mainController
-				/*test*.jpeg=mainController
-				/*/test.jpeg=mainController
+				/*demo.test*.jpeg=mainController
+				/*/demo.test.jpeg=mainController
 				/outofpattern*yeah=mainController
 				/anotherTest*=mainController
 				/stillAnotherTestYeah=mainController

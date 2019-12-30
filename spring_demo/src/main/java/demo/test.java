@@ -1,3 +1,5 @@
+package demo;
+
 public class test {
 	hh hh1;
 

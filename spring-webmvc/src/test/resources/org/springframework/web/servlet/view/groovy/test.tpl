@@ -5,7 +5,7 @@ html {
         title('Spring Framework Groovy Template Support')
     }
     body {
-        div(class:'test') {
+        div(class:'demo.test') {
 			h1("Hello $name")
 			p("Groovy Templates")
         }

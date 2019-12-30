@@ -9,10 +9,10 @@ They are declared in the `build.gradle` file in this folder.
 
 The `org.springframework.build.compile` applies the Java compiler conventions to the build.
 By default, the build is compiling sources with the `1.8` source and target compatibility.
-You can test a different source compatibility version on the CLI with a project property like:
+You can demo.test a different source compatibility version on the CLI with a project property like:
 
 ```
-./gradlew test -PjavaSourceVersion=11
+./gradlew demo.test -PjavaSourceVersion=11
 ```
 
 ## Build Plugins
@@ -27,9 +27,9 @@ configurations are preferred.
 
 ## Test sources
 
-The `org.springframework.build.test-sources` updates `testCompile` dependencies to include
-the test source sets of `project()` dependencies. This plugin is used in the Spring Framework build 
-to share test utilities and fixtures amongst modules.
+The `org.springframework.build.demo.test-sources` updates `testCompile` dependencies to include
+the demo.test source sets of `project()` dependencies. This plugin is used in the Spring Framework build 
+to share demo.test utilities and fixtures amongst modules.
 
 ## API Diff
 

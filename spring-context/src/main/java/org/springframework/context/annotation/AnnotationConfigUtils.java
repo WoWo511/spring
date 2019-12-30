@@ -39,6 +39,7 @@ import org.springframework.lang.Nullable;
 import org.springframework.util.ClassUtils;
 
 /**
+ * 一个工具类
  * Utility class that allows for convenient registration of common
  * {@link org.springframework.beans.factory.config.BeanPostProcessor} and
  * {@link org.springframework.beans.factory.config.BeanFactoryPostProcessor}
@@ -131,6 +132,7 @@ public abstract class AnnotationConfigUtils {
 
 
 	/**
+	 * 在这个里面吧所有的beanpostprocessor 都注册进来了哈
 	 * Register all relevant annotation post processors in the given registry.
 	 * @param registry the registry to operate on
 	 */

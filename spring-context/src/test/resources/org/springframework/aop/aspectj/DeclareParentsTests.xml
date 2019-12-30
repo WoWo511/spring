@@ -9,8 +9,8 @@
 		<aop:aspect id="beforeAdviceBindingTests" ref="introduction">
 			<aop:declare-parents
 					types-matching="org.springframework.tests.sample.beans..*"
-			    implement-interface="test.mixin.Lockable"
-					default-impl="test.mixin.DefaultLockable"
+			    implement-interface="demo.test.mixin.Lockable"
+					default-impl="demo.test.mixin.DefaultLockable"
 			/>
 			<aop:before
 					method="checkNotLocked"

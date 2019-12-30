@@ -14,18 +14,18 @@
 		<property name="bool" value="true"/>
 		<property name="stringList">
 			<list>
-				<value>#{'test-' + strValue + '-end'}</value>
-				<value>#{'test-' + strValue}</value>
-				<value>#{'test-' + numValue+ '-end'}</value>
-				<value>#{'test-' + numValue}</value>
+				<value>#{'demo.test-' + strValue + '-end'}</value>
+				<value>#{'demo.test-' + strValue}</value>
+				<value>#{'demo.test-' + numValue+ '-end'}</value>
+				<value>#{'demo.test-' + numValue}</value>
 			</list>
 		</property>
 		<property name="resourceArray">
-			<value>classpath:test.xml</value>
+			<value>classpath:demo.test.xml</value>
 		</property>
 		<property name="resourceList">
 			<list>
-				<value>classpath:test.xml</value>
+				<value>classpath:demo.test.xml</value>
 			</list>
 		</property>
 		<property name="resourceMap">
