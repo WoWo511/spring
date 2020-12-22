@@ -17,6 +17,9 @@
 package org.springframework.aop.framework;
 
 import org.springframework.lang.Nullable;
+/**
+ * 动态代理的接口，声明了动态代理的规范哈
+ */
 
 /**
  * Delegate interface for a configured AOP proxy, allowing for the creation

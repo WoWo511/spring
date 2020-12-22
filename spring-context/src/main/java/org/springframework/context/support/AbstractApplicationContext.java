@@ -514,6 +514,10 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 	@Override
 	public void refresh() throws BeansException, IllegalStateException {
+		/**
+		 * 先是将beanfactorypostprocessors执行钩子方法
+		 * 然后在注册 beanPostProcessors
+		 */
 		synchronized (this.startupShutdownMonitor) {
 			// Prepare this context for refreshing.
 			// 准备重新启动这个容器哈
@@ -528,11 +532,34 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 			try {
 				// Allows post-processing of the bean factory in context subclasses.
 				postProcessBeanFactory(beanFactory);
-				//实际上这个里面初始化了bean哈 也是在这个里面将config类配置的bean也都一块初始化了哈
+				//实际上这个里面初始化了bean哈
 				// Invoke factory processors registered as beans in the context.
+				//BeanFactoryPostProcessors beanFactoryPostProcessors 修改一些元数据
 				invokeBeanFactoryPostProcessors(beanFactory);
 
 				// Register bean processors that intercept bean creation.
+				/**
+				 * ConfigurationClassPostProcessor：处理配置类
+				 * • AutowiredAnnotationBeanPostProcessor：处理@Autowired帮助类注入属性
+				 * • RequiredAnnotationBeanPostProcessor：处理@required
+				 * • CommonAnnotationBeanPostProcessor：处理@Resource帮助类注入属性
+				 */
+				/**
+				 * 2 = "org.springframework.context.annotation.internalConfigurationAnnotationProcessor"
+				 * 3 = "org.springframework.context.annotation.internalAutowiredAnnotationProcessor"
+				 * 4 = "org.springframework.context.annotation.internalRequiredAnnotationProcessor"
+				 * 5 = "org.springframework.context.annotation.internalCommonAnnotationProcessor"
+				 * 6 = "org.springframework.context.event.internalEventListenerProcessor"
+				 * 7 = "org.springframework.context.event.internalEventListenerFactory"
+				 * //最终这些类变为：
+				 * 0 = {ApplicationContextAwareProcessor@1792}
+				 * 1 = {ConfigurationClassPostProcessor$ImportAwareBeanPostProcessor@1961}
+				 * 2 = {PostProcessorRegistrationDelegate$BeanPostProcessorChecker@2193}
+				 * 3 = {CommonAnnotationBeanPostProcessor@2135}
+				 * 4 = {AutowiredAnnotationBeanPostProcessor@1991}
+				 * 5 = {RequiredAnnotationBeanPostProcessor@2107}
+				 * 6 = {ApplicationListenerDetector@2194}
+				 */
 				registerBeanPostProcessors(beanFactory);
 
 				// Initialize message source for this context.

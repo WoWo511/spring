@@ -117,6 +117,7 @@ public class BeanConfigurerSupport implements BeanFactoryAware, InitializingBean
 
 
 	/**
+	 * 配置bean的实例哈
 	 * Configure the bean instance.
 	 * <p>Subclasses can override this to provide custom configuration logic.
 	 * Typically called by an aspect, for all bean instances matched by a pointcut.

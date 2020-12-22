@@ -96,7 +96,7 @@ final class JdkDynamicAopProxy implements AopProxy, InvocationHandler, Serializa
 	/**
 	 * Construct a new JdkDynamicAopProxy for the given AOP configuration.
 	 * @param config the AOP configuration as AdvisedSupport object
-	 * @throws AopConfigException if the config is invalid. We try to throw an informative
+	 * @throws AopConfigException if the config is invalid. We try to throw an inforative
 	 * exception in this case, rather than let a mysterious failure happen later.
 	 */
 	public JdkDynamicAopProxy(AdvisedSupport config) throws AopConfigException {

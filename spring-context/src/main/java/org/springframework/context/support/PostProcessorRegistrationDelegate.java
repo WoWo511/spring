@@ -76,7 +76,7 @@ final class PostProcessorRegistrationDelegate {
 					regularPostProcessors.add(postProcessor);
 				}
 			}
-
+			//不初始化Factory 要等着post-processor去个性化初始化他们
 			// Do not initialize FactoryBeans here: We need to leave all regular beans
 			// uninitialized to let the bean factory post-processors apply to them!
 			// Separate between BeanDefinitionRegistryPostProcessors that implement
@@ -84,14 +84,16 @@ final class PostProcessorRegistrationDelegate {
 			List<BeanDefinitionRegistryPostProcessor> currentRegistryProcessors = new ArrayList<>();
 			/**
 			 * 通过这个方法 或者BD注册的处理器，获得处理器之后再下面进行处理哈
+			 * 首先找到beanDefinitionRegisterPostProcessor 把其他的BeanDefinition也注册进来哈
 			 */
 			// First, invoke the BeanDefinitionRegistryPostProcessors that implement PriorityOrdered.
+			//这个里面已经按照类型来取了，如果我自己实现一个会不会也可以注册进来哈
 			String[] postProcessorNames =
 					beanFactory.getBeanNamesForType(BeanDefinitionRegistryPostProcessor.class, true, false);
 			for (String ppName : postProcessorNames) {
 				if (beanFactory.isTypeMatch(ppName, PriorityOrdered.class)) {
 					/**
-					 * 这个里面有容器的getbean哈
+					 * 这个里面有容器的getbean哈  通过getbean的方式将几个postProcessor 进行实例化哈
 					 */
 					currentRegistryProcessors.add(beanFactory.getBean(ppName, BeanDefinitionRegistryPostProcessor.class));
 					processedBeans.add(ppName);
@@ -100,12 +102,14 @@ final class PostProcessorRegistrationDelegate {
 			sortPostProcessors(currentRegistryProcessors, beanFactory);
 			registryProcessors.addAll(currentRegistryProcessors);
 			//这个里面将config类里面的beanDefinition 注册到容器里面哈
+			//专门用来给BDPP来钩子的方法，如果我们自己继承了，也可以自己注册呀
 			invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry);
 			currentRegistryProcessors.clear();
 
 			// Next, invoke the BeanDefinitionRegistryPostProcessors that implement Ordered.
 			postProcessorNames = beanFactory.getBeanNamesForType(BeanDefinitionRegistryPostProcessor.class, true, false);
 			for (String ppName : postProcessorNames) {
+				//是不是已经有的了  或者是不是Ordered
 				if (!processedBeans.contains(ppName) && beanFactory.isTypeMatch(ppName, Ordered.class)) {
 					currentRegistryProcessors.add(beanFactory.getBean(ppName, BeanDefinitionRegistryPostProcessor.class));
 					processedBeans.add(ppName);

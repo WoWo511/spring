@@ -66,6 +66,8 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	 */
 	public AnnotationConfigApplicationContext() {
 		// 看一个类最好的方法就是看构造函数 已创建的时候添加了哪些内容哈
+		//Reader
+		//Scanner 两个东西
 		this.reader = new AnnotatedBeanDefinitionReader(this);
 		this.scanner = new ClassPathBeanDefinitionScanner(this);
 	}

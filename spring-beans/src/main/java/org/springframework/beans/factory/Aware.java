@@ -32,6 +32,11 @@ package org.springframework.beans.factory;
  * @author Juergen Hoeller
  * @since 3.1
  */
+
+/**
+ * 实现了相应的aware可以感知相应的信息
+ * 我可以进行相应的判断，比如 instance of aware 然后再区分是什么aware
+ */
 public interface Aware {
 
 }

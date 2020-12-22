@@ -410,7 +410,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 	@Override
 	public Object applyBeanPostProcessorsBeforeInitialization(Object existingBean, String beanName)
 			throws BeansException {
-
+		//看一下这里是什么时候执行的哈
 		Object result = existingBean;
 		for (BeanPostProcessor processor : getBeanPostProcessors()) {
 			Object current = processor.postProcessBeforeInitialization(result, beanName);
@@ -550,13 +550,17 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 			throws BeanCreationException {
 		//普通类用doCreateBean 来创建这个bean哈
 		// Instantiate the bean.
+		/**
+		 * 如何解决循环依赖的问题哈
+		 * 三个 先生成类的实例 后装配类哈
+		 */
 		BeanWrapper instanceWrapper = null;
 		if (mbd.isSingleton()) {
 			instanceWrapper = this.factoryBeanInstanceCache.remove(beanName);
 		}
 		if (instanceWrapper == null) {
 			/**
-			 * 这个里面来创建bean哈
+			 * 这个里面来创建bean哈 创建包装类
 			 */
 			instanceWrapper = createBeanInstance(beanName, mbd, args);
 		}
@@ -581,6 +585,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		}
 		/**
 		 * 		解决循环依赖问题
+		 * 	先把这个半成品放入缓存里面哈
  		 */
 		// Eagerly cache singletons to be able to resolve circular references
 		// even when triggered by lifecycle interfaces like BeanFactoryAware.
@@ -591,6 +596,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 				logger.trace("Eagerly caching bean '" + beanName +
 						"' to allow for resolving potential circular references");
 			}
+			//addsingletonFactory 添加到三级缓存里面哈
 			addSingletonFactory(beanName, () -> getEarlyBeanReference(beanName, mbd, bean));
 		}
 
@@ -601,6 +607,9 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 			 * 负责属性装配哈
 			 */
 			populateBean(beanName, mbd, instanceWrapper);
+			/**
+			 * 初始化bean，这个里面调用bean的钩子方法哈
+			 */
 			exposedObject = initializeBean(beanName, exposedObject, mbd);
 		}
 		catch (Throwable ex) {
@@ -697,8 +706,9 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 	}
 
 	/**
-	 * Determine the target type for the given bean definition which is based on
-	 * a factory method. Only called if there is no singleton instance registered
+	 * 确定基于工厂方法给定bean的目标类型哈
+	 * Determine the target type for the given bean definition which is based on a factory method.
+	 *  Only called if there is no singleton instance registered
 	 * for the target bean already.
 	 * <p>This implementation determines the type matching {@link #createBean}'s
 	 * different creation strategies. As far as possible, we'll perform static
@@ -1122,7 +1132,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 				Class<?> targetType = determineTargetType(beanName, mbd);
 				if (targetType != null) {
 					/**
-					 * 这个方法里面将代理对象转换成实际的对象哈
+					 * 这个方法里面将代理对象转换成实际的对象哈  这个地方知己上是执行容器中的beanfactory的postProcessors  不一定是AOP的postProcessor
 					 */
 					bean = applyBeanPostProcessorsBeforeInstantiation(targetType, beanName);
 					if (bean != null) {
