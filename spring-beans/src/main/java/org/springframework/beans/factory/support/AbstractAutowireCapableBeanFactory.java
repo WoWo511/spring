@@ -502,7 +502,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		}
 
 		try {
-			//在这个代理对象成目标对象哈
+			//在这个代理对象成目标对象哈 生成代理对象就是用 那个东西来的哈
 			// Give BeanPostProcessors a chance to return a proxy instead of the target bean instance.
 			Object bean = resolveBeforeInstantiation(beanName, mbdToUse);
 			if (bean != null) {

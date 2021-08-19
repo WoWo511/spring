@@ -1,4 +1,4 @@
-package AopDemo;
+package demo;
 
 import org.springframework.stereotype.Component;
 

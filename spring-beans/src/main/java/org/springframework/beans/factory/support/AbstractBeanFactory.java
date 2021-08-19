@@ -1779,7 +1779,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 	}
 
 	/**
-	 * 这个里面如果发现他的名字是bean工厂的名字 就取得他生成的类的名字哈
+	 * 其实就是检查这个类是不是FactoryBean  如果是需要返回getObject方法之后的bean
 	 * Get the object for the given bean instance, either the bean
 	 * instance itself or its created object in case of a FactoryBean.
 	 * @param beanInstance the shared bean instance

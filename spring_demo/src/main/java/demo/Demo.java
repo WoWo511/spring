@@ -22,8 +22,8 @@ public class Demo {
 		/**
 		 * 需要扫描以下才可以哈
 		 */
-		autowiredDemo test = (autowiredDemo) annotationConfigApplicationContext.getBean("autowiredDemo");
-		System.out.println();
+		test test = (test) annotationConfigApplicationContext.getBean("test");
+		test.sayHH();
 //		GenericXmlApplicationContext genericXmlApplicationContext = new GenericXmlApplicationContext();
 //		genericXmlApplicationContext.load("");
 //		genericXmlApplicationContext.refresh();
